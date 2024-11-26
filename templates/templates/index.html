@@ -2,25 +2,62 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Influencer Valuation Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: inline-block;
+            width: 150px;
+        }
+        select, input[type="text"] {
+            padding: 5px;
+            width: 200px;
+        }
+        input[type="submit"] {
+            padding: 8px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .error {
+            color: red;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
     <h1>Influencer Valuation Tool</h1>
     {% if error %}
-        <p style="color:red;">{{ error }}</p>
+        <p class="error">{{ error }}</p>
     {% endif %}
     <form method="POST">
-        <label for="username">Influencer Username:</label>
-        <input type="text" name="username" required><br><br>
-        
-        <label for="platform">Select Platform:</label>
-        <select name="platform">
-            <option value="instagram">Instagram</option>
-            <option value="youtube">YouTube</option>
-            <!-- Add more platforms as needed -->
-        </select><br><br>
-        
-        <input type="submit" value="Get Valuation">
+        <div class="form-group">
+            <label for="username">Influencer Username:</label>
+            <input type="text" id="username" name="username" required pattern="[A-Za-z0-9._]{1,30}">
+        </div>
+        <div class="form-group">
+            <label for="platform">Select Platform:</label>
+            <select id="platform" name="platform" required>
+                <option value="">Select a platform</option>
+                <option value="instagram">Instagram</option>
+                <option value="youtube">YouTube</option>
+                <option value="tiktok">TikTok</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Get Valuation">
+        </div>
     </form>
 </body>
 </html>
