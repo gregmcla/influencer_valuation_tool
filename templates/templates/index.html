@@ -1,0 +1,26 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Influencer Valuation Tool</title>
+</head>
+<body>
+    <h1>Influencer Valuation Tool</h1>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    <form method="POST">
+        <label for="username">Influencer Username:</label>
+        <input type="text" name="username" required><br><br>
+        
+        <label for="platform">Select Platform:</label>
+        <select name="platform">
+            <option value="instagram">Instagram</option>
+            <option value="youtube">YouTube</option>
+            <!-- Add more platforms as needed -->
+        </select><br><br>
+        
+        <input type="submit" value="Get Valuation">
+    </form>
+</body>
+</html>
