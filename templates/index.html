@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Influencer Valuation Tool</title>
+    <title>Stream Revenue Analytics</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,30 +35,117 @@
             color: red;
             margin-bottom: 15px;
         }
+        select {
+            padding: 8px;
+            width: 220px;
+            margin-bottom: 10px;
+        }
+        #username {
+            display: none;  /* Hide the text input */
+        }
+        #username-select {
+            width: 220px;
+            padding: 8px;
+        }
+        .nav-links {
+            margin: 20px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .nav-links a {
+            margin-right: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
-<body>
-    <h1>Influencer Valuation Tool</h1>
-    {% if error %}
-        <p class="error">{{ error }}</p>
-    {% endif %}
-    <form method="POST">
-        <div class="form-group">
-            <label for="username">Influencer Username:</label>
-            <input type="text" id="username" name="username" required pattern="[A-Za-z0-9._]{1,30}">
+<body class="bg-gray-100 min-h-screen">
+    <nav class="gradient-bg text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Stream Revenue Analytics</h1>
+            <div class="space-x-4">
+                <a href="/" class="hover:text-gray-200">Home</a>
+                <a href="/leaderboard" class="hover:text-gray-200">Leaderboard</a>
+                <a href="/compare" class="hover:text-gray-200">Compare</a>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="platform">Select Platform:</label>
-            <select id="platform" name="platform" required>
-                <option value="">Select a platform</option>
-                <option value="instagram">Instagram</option>
-                <option value="youtube">YouTube</option>
-                <option value="tiktok">TikTok</option>
-            </select>
+    </nav>
+
+    <main class="container mx-auto p-6">
+        <div class="glass-card p-6 mb-6">
+            <h2 class="text-2xl mb-4">Revenue Calculator</h2>
+            <form action="/leaderboard" method="GET">
+                <!-- form fields -->
+            </form>
         </div>
-        <div class="form-group">
-            <input type="submit" value="Get Valuation">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="glass-card p-6">
+                <h3 class="text-xl mb-4">Platform Statistics</h3>
+                <canvas id="platformStats"></canvas>
+            </div>
+            <div class="glass-card p-6">
+                <h3 class="text-xl mb-4">Top Earners</h3>
+                <canvas id="topEarners"></canvas>
+            </div>
         </div>
-    </form>
+    </main>
+
+    <script>
+        const streamers = {
+            twitch: ['xqc', 'kai_cenat', 'ibai'],
+            youtube_gaming: ['DrDisrespect', 'ludwig']
+        };
+
+        function updateStreamers() {
+            const platform = document.getElementById('platform').value;
+            const usernameSelect = document.getElementById('username-select');
+            usernameSelect.innerHTML = '<option value="">Select a streamer</option>';
+            
+            if (platform) {
+                streamers[platform].forEach(username => {
+                    const option = document.createElement('option');
+                    option.value = username;
+                    option.textContent = '@' + username;
+                    usernameSelect.appendChild(option);
+                });
+            }
+        }
+
+        const platformStats = new Chart(document.getElementById('platformStats'), {
+            type: 'bar',
+            data: {
+                labels: ['Twitch', 'YouTube Gaming'],
+                datasets: [{
+                    label: 'Average Viewer Count',
+                    data: [75000, 27500],
+                    backgroundColor: ['rgba(145, 70, 255, 0.6)', 'rgba(255, 0, 0, 0.6)']
+                }]
+            }
+        });
+
+        const topEarners = new Chart(document.getElementById('topEarners'), {
+            type: 'doughnut',
+            data: {
+                labels: ['xQc', 'Kai Cenat', 'Ibai', 'Dr DisRespect', 'Ludwig'],
+                datasets: [{
+                    data: [875000, 755000, 835000, 605000, 615000],
+                    backgroundColor: [
+                        '#9146FF', '#FF6B6B', '#4BC0C0', '#FF4444', '#36A2EB'
+                    ]
+                }]
+            }
+        });
+    </script>
 </body>
 </html>

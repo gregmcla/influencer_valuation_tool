@@ -51,34 +51,59 @@
 </head>
 <body>
     <div class="container">
-        <span class="platform-badge">{{ platform }}</span>
-        <h1>Valuation Results for @{{ username }}</h1>
+        <span class="platform-badge">{{ platform|title }}</span>
+        <h1>Revenue Analysis for {{ profile.display_name|default(username) }}</h1>
         
         <div class="metrics">
-            <div class="metric-card">
-                <h3>Followers</h3>
-                <p>{{ profile.followers|format_number }}</p>
-            </div>
-            <div class="metric-card">
-                <h3>Engagement Rate</h3>
-                <p>{{ "%.2f"|format(profile.engagement_rate * 100) }}%</p>
-            </div>
-            <div class="metric-card">
-                <h3>Est. Cost Per Post</h3>
-                <p>${{ profile.estimated_cost_per_post|format_number }}</p>
-            </div>
-            <div class="metric-card">
-                <h3>Total Valuation</h3>
-                <p>${{ valuation|format_number }}</p>
-            </div>
+            {% if platform == 'twitch' %}
+                <div class="metric-card">
+                    <h3>Subscribers</h3>
+                    <p>{{ profile.subscribers|format_number }}</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Average Viewers</h3>
+                    <p>{{ profile.avg_viewers|format_number }}</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Monthly Revenue</h3>
+                    <p>${{ revenue|format_number }}</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Hours Streamed</h3>
+                    <p>{{ profile.hours_streamed|format_number }}</p>
+                </div>
+            {% else %}
+                <div class="metric-card">
+                    <h3>Subscribers</h3>
+                    <p>{{ profile.subscribers|format_number }}</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Average Viewers</h3>
+                    <p>{{ profile.avg_viewers|format_number }}</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Monthly Revenue</h3>
+                    <p>${{ revenue|format_number }}</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Peak Viewers</h3>
+                    <p>{{ profile.peak_viewers|format_number }}</p>
+                </div>
+            {% endif %}
         </div>
 
         <div>
-            <h3>Content Niche</h3>
+            <h3>Content Categories</h3>
             <p>{{ profile.niche|join(", ") }}</p>
         </div>
 
-        <a href="/" class="back-button">← Back to Home</a>
+        <div class="mt-4">
+            <h3>Stream Schedule</h3>
+            <p>{{ profile.stream_schedule|join(", ") if profile.stream_schedule else "Not available" }}</p>
+        </div>
+
+        <a href="/" class="back-button">← Back to Search</a>
+        <a href="/leaderboard" class="back-button" style="margin-left: 10px;">View Leaderboard</a>
     </div>
 </body>
 </html>

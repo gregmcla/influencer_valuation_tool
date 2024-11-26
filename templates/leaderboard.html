@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Leaderboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .leaderboard-table th, .leaderboard-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .leaderboard-table th {
+            background-color: #f8f9fa;
+        }
+        .platform-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            background: #007bff;
+            color: white;
+        }
+        .nav-links {
+            margin: 20px 0;
+        }
+        .rank-1 { background: linear-gradient(135deg, #ffd700 0%, #ffed4a 100%); }
+        .rank-2 { background: linear-gradient(135deg, #c0c0c0 0%, #e5e5e5 100%); }
+        .rank-3 { background: linear-gradient(135deg, #cd7f32 0%, #dca781 100%); }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <nav class="gradient-bg text-white p-4">
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/leaderboard">Leaderboard</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-6">
+        <div class="glass-card p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Top Earning Streamers</h2>
+                <div class="flex gap-2">
+                    <button onclick="sortBy('revenue')" class="px-4 py-2 bg-indigo-600 text-white rounded">Sort by Revenue</button>
+                    <button onclick="sortBy('viewers')" class="px-4 py-2 bg-indigo-600 text-white rounded">Sort by Viewers</button>
+                </div>
+            </div>
+
+            <div class="grid gap-4">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <table class="min-w-full">
+                        <thead class="bg-gray-800 text-white">
+                            <tr>
+                                <th class="py-3 px-4 text-left">Rank</th>
+                                <th class="py-3 px-4 text-left">Username</th>
+                                <th class="py-3 px-4 text-left">Platform</th>
+                                <th class="py-3 px-4 text-right">Followers</th>
+                                <th class="py-3 px-4 text-right">Engagement</th>
+                                <th class="py-3 px-4 text-right">Est. Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for streamer in streamers %}
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="py-4 px-4">{{ loop.index }}</td>
+                                <td class="py-4 px-4 font-medium">@{{ streamer.username }}</td>
+                                <td class="py-4 px-4">
+                                    <span class="px-2 py-1 rounded-full text-xs 
+                                               {% if streamer.platform == 'twitch' %}bg-purple-100 text-purple-800
+                                               {% elif streamer.platform == 'youtube' %}bg-red-100 text-red-800
+                                               {% else %}bg-pink-100 text-pink-800{% endif %}">
+                                        {{ streamer.platform }}
+                                    </span>
+                                </td>
+                                <td class="py-4 px-4 text-right">{{ streamer.followers|format_number }}</td>
+                                <td class="py-4 px-4 text-right">{{ "%.1f"|format(streamer.engagement_rate * 100) }}%</td>
+                                <td class="py-4 px-4 text-right">${{ (streamer.estimated_cost_per_post)|format_number }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-6">
+            <a href="/" class="inline-block bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-700">
+                Back to Search
+            </a>
+        </div>
+    </main>
+
+    <script>
+        // Add sorting functionality
+        function sortBy(criteria) {
+            // Implementation here
+        }
+    </script>
+</body>
+</html>

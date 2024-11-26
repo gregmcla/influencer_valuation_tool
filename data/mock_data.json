@@ -1,71 +1,120 @@
 {
-    "instagram": {
-        "kimkardashian": {
-            "followers": 364000000,
-            "avg_likes": 2800000,
-            "avg_comments": 12500,
+    "twitch": {
+        "ninja": {
+            "followers": 18500000,
+            "subscribers": 45000,
+            "avg_viewers": 15000,
+            "peak_viewers": 35000,
+            "hours_streamed": 150,
+            "sub_revenue": 225000,
+            "bit_revenue": 45000,
+            "donation_revenue": 30000,
+            "sponsorship_value": 150000,
+            "engagement_rate": 0.082,
+            "niche": ["gaming", "fortnite", "variety"]
+        },
+        "pokimane": {
+            "followers": 9200000,
+            "subscribers": 25000,
+            "avg_viewers": 18000,
+            "peak_viewers": 40000,
+            "hours_streamed": 120,
+            "sub_revenue": 125000,
+            "bit_revenue": 35000,
+            "donation_revenue": 25000,
+            "sponsorship_value": 100000,
+            "engagement_rate": 0.095,
+            "niche": ["gaming", "just chatting", "variety"]
+        },
+        "xqc": {
+            "display_name": "xQc",
+            "followers": 12500000,
+            "subscribers": 85000,
+            "avg_viewers": 70000,
+            "peak_viewers": 130000,
+            "hours_streamed": 280,
+            "sub_revenue": 425000,
+            "bit_revenue": 95000,
+            "donation_revenue": 55000,
+            "sponsorship_value": 300000,
+            "engagement_rate": 0.125,
+            "niche": ["variety", "reactions", "gaming"],
+            "language": "English",
+            "partnership_tier": "Partner",
+            "stream_schedule": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            "avg_stream_duration": 15
+        },
+        "kai_cenat": {
+            "display_name": "Kai Cenat",
+            "followers": 8200000,
+            "subscribers": 75000,
+            "avg_viewers": 65000,
+            "peak_viewers": 120000,
+            "hours_streamed": 200,
+            "sub_revenue": 375000,
+            "bit_revenue": 85000,
+            "donation_revenue": 45000,
+            "sponsorship_value": 250000,
+            "engagement_rate": 0.115,
+            "niche": ["entertainment", "gaming", "irl"],
+            "language": "English",
+            "partnership_tier": "Partner",
+            "stream_schedule": ["Mon", "Wed", "Fri", "Sat"],
+            "avg_stream_duration": 8
+        },
+        "ibai": {
+            "display_name": "Ibai",
+            "followers": 15000000,
+            "subscribers": 65000,
+            "avg_viewers": 90000,
+            "peak_viewers": 150000,
+            "hours_streamed": 160,
+            "sub_revenue": 325000,
+            "bit_revenue": 75000,
+            "donation_revenue": 35000,
+            "sponsorship_value": 400000,
+            "engagement_rate": 0.135,
+            "niche": ["entertainment", "sports", "gaming"],
+            "language": "Spanish",
+            "partnership_tier": "Partner",
+            "stream_schedule": ["Mon", "Tue", "Thu", "Fri"],
+            "avg_stream_duration": 6
+        }
+    },
+    "youtube_gaming": {
+        "DrDisrespect": {
+            "display_name": "Dr DisRespect",
+            "subscribers": 4800000,
+            "avg_viewers": 30000,
+            "peak_viewers": 55000,
+            "hours_streamed": 160,
+            "membership_revenue": 220000,
+            "superchat_revenue": 85000,
+            "sponsorship_value": 300000,
+            "merchandise_revenue": 150000,
+            "engagement_rate": 0.082,
+            "niche": ["fps", "gaming", "entertainment"],
+            "language": "English",
+            "partnership_tier": "Diamond",
+            "stream_schedule": ["Mon", "Wed", "Thu"],
+            "avg_stream_duration": 7
+        },
+        "ludwig": {
+            "display_name": "Ludwig",
+            "subscribers": 3500000,
+            "avg_viewers": 25000,
+            "peak_viewers": 45000,
+            "hours_streamed": 140,
+            "membership_revenue": 180000,
+            "superchat_revenue": 65000,
+            "sponsorship_value": 250000,
+            "merchandise_revenue": 120000,
             "engagement_rate": 0.078,
-            "post_frequency": 1.2,
-            "estimated_cost_per_post": 850000,
-            "niche": ["fashion", "lifestyle", "beauty"]
-        },
-        "cristiano": {
-            "followers": 605000000,
-            "avg_likes": 5200000,
-            "avg_comments": 25000,
-            "engagement_rate": 0.086,
-            "post_frequency": 0.8,
-            "estimated_cost_per_post": 1200000,
-            "niche": ["sports", "lifestyle", "fitness"]
-        },
-        "mrBeast": {
-            "followers": 21000000,
-            "avg_likes": 1200000,
-            "avg_comments": 8500,
-            "engagement_rate": 0.057,
-            "post_frequency": 0.5,
-            "estimated_cost_per_post": 150000,
-            "niche": ["entertainment", "philanthropy"]
-        }
-    },
-    "youtube": {
-        "MrBeast": {
-            "subscribers": 172000000,
-            "avg_views": 20000000,
-            "avg_comments": 100000,
-            "engagement_rate": 0.12,
-            "upload_frequency": 0.15,
-            "estimated_cost_per_video": 1500000,
-            "niche": ["entertainment", "challenges", "philanthropy"]
-        },
-        "PewDiePie": {
-            "subscribers": 111000000,
-            "avg_views": 2500000,
-            "avg_comments": 35000,
-            "engagement_rate": 0.023,
-            "upload_frequency": 0.2,
-            "estimated_cost_per_video": 500000,
-            "niche": ["gaming", "entertainment", "vlogs"]
-        }
-    },
-    "tiktok": {
-        "charlidamelio": {
-            "followers": 150000000,
-            "avg_views": 5000000,
-            "avg_likes": 500000,
-            "engagement_rate": 0.033,
-            "post_frequency": 1.5,
-            "estimated_cost_per_post": 400000,
-            "niche": ["dance", "lifestyle", "entertainment"]
-        },
-        "khaby.lame": {
-            "followers": 160000000,
-            "avg_views": 7000000,
-            "avg_likes": 800000,
-            "engagement_rate": 0.044,
-            "post_frequency": 1.2,
-            "estimated_cost_per_post": 450000,
-            "niche": ["comedy", "entertainment"]
+            "niche": ["variety", "gaming", "entertainment"],
+            "language": "English",
+            "partnership_tier": "Diamond",
+            "stream_schedule": ["Tue", "Wed", "Thu", "Fri"],
+            "avg_stream_duration": 5
         }
     }
 }
